@@ -1,0 +1,47 @@
+{
+ "format": "avsim-studio/1",
+ "params": {
+  "cutT0": 6.5,
+  "cutDur": 2.4,
+  "cutV": 15,
+  "pedT0": 11,
+  "pedV": 1.45,
+  "busGo": 17,
+  "cutDs": -4,
+  "tgT": 0.9,
+  "mu": 0.8,
+  "cutGap": 12,
+  "cutBrake": 0,
+  "pedGap": 4.5,
+  "pedLook": 1,
+  "civil": true
+ },
+ "policy": {},
+ "hazards": [
+  {
+   "x": 160,
+   "side": "S",
+   "v": 2,
+   "t0": 0,
+   "trig": 35,
+   "type": "ped"
+  }
+ ],
+ "ego": "planner",
+ "space": {
+  "h0_x": [
+   130,
+   300
+  ],
+  "h0_v": [
+   1.0,
+   2.2
+  ],
+  "h0_trig": [
+   10,
+   40
+  ]
+ },
+ "exposure": 0.03,
+ "why": "Người đi bộ băng ngang giữa phố (không có vạch), bước xuống từ lề phải ngay trước xe ta. h0_x [130, 300]: cả đoạn phố sau vạch qua đường có xe buýt. NHTSA Traffic Safety Facts (2011-2015) ghi 69-72% người đi bộ tử vong ở vị trí không phải nút giao, nên băng ngang giữa phố là kiểu xung đột đáng kể. h0_v [1.0, 2.2] m/s: Forde & Daniel (TRB 2017, 2 904 người, vạch giữa phố không đèn) đo trung bình 4.77 ft/s = 1.45 m/s, người già/khuyết tật 3.42 ft/s = 1.04 m/s (cận dưới); thanh niên 5.07 ft/s = 1.55 m/s; Knoblauch et al. (TRR 1538, 1996) 15th percentile 1.25 m/s. Cận trên 2.2 m/s (đi vội, chạy chậm khi băng trước xe) là GIẢ ĐỊNH, chưa có số đo; vẫn dưới ngưỡng 2.5 m/s mà is_feasible coi là chạy. Lưu ý: phân phối đều trên [1.0, 2.2] cho người đi nhanh nhiều trọng số hơn thực tế (trung bình đo được 1.45), mà va chạm tập trung ở v > 1.9, nên p có thể bị ĐẨY CAO. h0_trig [10, 40] m: người quyết định băng khi xe còn cách 10-40 m (xe ở 7-12 m/s, tức khoảng 1-5 s), giả định. exposure 0.03/chuyến: Tuổi Trẻ (2018) ghi 10 nhóm băng ngang trong 30 phút tại một đoạn đường Nguyễn Xiển (Hà Nội), khoảng 20 lượt/giờ. Giả sử trải trên ~100 m đường: 20/(3600 s x 100 m) = 5.6e-5 lượt/(s.m). Xe ta ở trong cửa sổ 10-40 m (30 m) trước mỗi điểm khoảng 3 s, trên 170 m đường: 5.6e-5 x 170 x 3 = 0.03 lượt/chuyến. Đây là điểm nóng (đếm báo chí, không phải khảo sát hệ thống) nên nhiều khả năng là cận trên; chưa có số đo tần suất băng ngang giữa phố cho TP.HCM."
+}
